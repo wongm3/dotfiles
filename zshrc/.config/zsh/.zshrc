@@ -73,3 +73,9 @@ fi
 # +----------+
 
 eval $(thefuck --alias)
+
+# +--------+
+# | ZOXIDE |
+# +--------+
+
+eval "$(zoxide init zsh)"

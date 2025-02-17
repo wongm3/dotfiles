@@ -66,3 +66,10 @@ fastfetch
 if [ $(command -v "fzf") ]; then
     source $ZDOTDIR/fzf.zsh
 fi
+
+
+# +----------+
+# | THE FUCK |
+# +----------+
+
+eval $(thefuck --alias)

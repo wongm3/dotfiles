@@ -119,3 +119,15 @@ alias tkss='tmux kill-session -t'
 alias tksv='tmux kill-server'
 alias tl='tmux list-sessions'
 alias ts='tmux new-session -s'
+
+
+# +----------+
+# | PERSONAL |
+# +----------+
+
+alias ncu="npx npm-check-updates"
+alias cnvim="cd ~/.config/nvim && nvim"
+alias czsh="nvim ~/.zshrc"
+alias cghostty="nvim ~/.config/ghostty/"
+alias develop="~/development"
+alias pagro="~/development/pagro"

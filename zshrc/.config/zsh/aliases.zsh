@@ -27,7 +27,6 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
-
 # +-----+
 # | GIT |
 # +-----+
@@ -108,3 +107,13 @@ alias gsb='git status --short --branch'
 alias gsi='git submodule init'
 alias gsu='git submodule update'
 
+# +------+
+# | TMUX |
+# +------+
+
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias tkss='tmux kill-session -t'
+alias tksv='tmux kill-server'
+alias tl='tmux list-sessions'
+alias ts='tmux new-session -s'

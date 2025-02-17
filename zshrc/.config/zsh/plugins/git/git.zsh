@@ -6,7 +6,6 @@ function git_current_branch() {
     [[ $ret == 128 ]] && return  # no git repo.
     ref=$(git rev-parse --short HEAD 2> /dev/null) || return
   fi
-  echo $ref
   echo ${ref#refs/heads/}
 }
 

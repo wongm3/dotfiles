@@ -49,6 +49,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light junegunn/fzf-git.sh 
 
 # Add in snippets
+zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::tmux
 

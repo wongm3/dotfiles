@@ -5,17 +5,19 @@
 source $ZDOTDIR/plugins/git.zsh
 
 
-# +---------------------+
-# | SYNTAX HIGHLIGHTING |
-# +---------------------+
+# +-------------+
+# | ZSH PLUGINS |
+# +-------------+
 
-source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-completions/zsh-completions.zsh
 
 # +---------+
 # | ALIASES |
 # +---------+
 
-source $XDG_CONFIG_HOME/aliases/aliases
+source $ZDOTDIR/aliases.zsh
 
 # +----------+
 # | Starship |
@@ -28,3 +30,5 @@ eval "$(starship init zsh)"
 # +-----------+
 
 fastfetch
+
+# +-----------------+

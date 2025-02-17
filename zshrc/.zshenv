@@ -3,6 +3,7 @@
 # +---------+
 
 export DOTFILES="$HOME/dotfiles"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # +-----+
 # | XDG |

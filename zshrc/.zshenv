@@ -48,12 +48,12 @@ export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200"
 
 # +-----+
-# | NPM |
+# | NVM |
 # +-----+
 
-export NPM_PATH="$XDG_CONFIG_HOME/node_modules"
-export NPM_BIN="$XDG_CONFIG_HOME/node_modules/bin"
-export NPM_CONFIG_PREFIX="$XDG_CONFIG_HOME/node_modules"
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 source $ZDOTDIR/.localenv.zsh

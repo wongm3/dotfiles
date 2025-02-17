@@ -1,10 +1,12 @@
 [submodule "zshrc/.config/zsh/plugins/zsh-syntax-highlighting"]
 	path = zshrc/.config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-    branch = master
 [submodule "zshrc/.config/zsh/plugins/zsh-completions"]
 	path = zshrc/.config/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 [submodule "zshrc/.config/zsh/plugins/zsh-autosuggestions"]
 	path = zshrc/.config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zshrc/.config/zsh/plugins/fzf-git"]
+	path = zshrc/.config/zsh/plugins/fzf-git
+	url = https://github.com/junegunn/fzf-git.sh.git

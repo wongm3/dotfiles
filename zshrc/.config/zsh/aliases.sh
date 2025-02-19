@@ -25,7 +25,7 @@ alias 9='cd -9'
 # | LS |
 # +----+
 
-alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --ignore-glob=".git"'
+alias ls='eza --color=always --long --icons=always --ignore-glob=".git"'
 alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'

@@ -91,7 +91,7 @@ alt-shift-t = 'move-node-to-workspace T'
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-alt-shift-semicolon = 'mode service'
+alt-shift-space = 'mode service'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']

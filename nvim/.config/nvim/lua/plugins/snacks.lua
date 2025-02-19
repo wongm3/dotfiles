@@ -7,6 +7,7 @@ return {
     explorer = {},
     indent = {},
     input = {},
+    lazygit = {},
     notifier = {},
     picker = {},
     scope = {},
@@ -25,6 +26,8 @@ return {
       desc = "Explorer Snacks",
     },
     { "<leader>e", "<leader>fe", desc = "Explorer Snacks", remap = true },
+    -- Lazy Git
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     -- Notifications
     { "<leader>n", function()
       if Snacks.config.picker and Snacks.config.picker.enabled then
@@ -91,6 +94,5 @@ return {
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-
   }
 }

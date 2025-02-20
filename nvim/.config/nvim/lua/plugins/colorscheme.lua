@@ -7,8 +7,10 @@ return {
     flavour = 'macchiato',
     transparent_background = true,
     integrations = {
+      mini = true,
       snacks = true,
-      treesitter = true
+      treesitter = true,
+      which_key = true
     }
   },
   config = function(_, opts)

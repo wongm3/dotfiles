@@ -1,6 +1,6 @@
 return {
   'snacks.nvim',
   opts = {
-    dashboard = { example = "advanced" }
-  }
+    dashboard = { example = 'advanced' },
+  },
 }

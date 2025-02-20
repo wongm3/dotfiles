@@ -10,12 +10,12 @@ return {
       mini = true,
       snacks = true,
       treesitter = true,
-      which_key = true
-    }
+      which_key = true,
+    },
   },
   config = function(_, opts)
     require('catppuccin').setup(opts)
 
     vim.cmd 'colorscheme catppuccin'
-  end
+  end,
 }

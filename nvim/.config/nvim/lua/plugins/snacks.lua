@@ -22,9 +22,9 @@ return {
       function()
         Snacks.explorer()
       end,
-      desc = "Explorer Snacks",
+      desc = "Explorer",
     },
-    { "<leader>e", "<leader>fe", desc = "Explorer Snacks", remap = true },
+    { "<leader>e", "<leader>fe", desc = "Explorer", remap = true },
     -- Lazy Git
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     -- Notifications

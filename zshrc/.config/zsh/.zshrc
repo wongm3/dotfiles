@@ -42,6 +42,8 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
+zinit ice pick"themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
+zinit light catppuccin/zsh-syntax-highlighting
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions

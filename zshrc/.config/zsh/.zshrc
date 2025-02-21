@@ -89,4 +89,4 @@ eval $(thefuck --alias)
 # | ZOXIDE |
 # +--------+
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"

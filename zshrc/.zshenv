@@ -61,4 +61,10 @@ export NVM_DIR="$HOME/.config/nvm"
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+# +---------+
+# | LazyGit |
+# +---------+
+
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin-macchiato-theme.yml"
+
 source $ZDOTDIR/.localenv.zsh

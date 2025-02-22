@@ -67,4 +67,10 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin-macchiato-theme.yml"
 
+# +------+
+# | TMUX |
+# +------+
+
+export ZSH_TMUX_FIXTERM=false
+
 source $ZDOTDIR/.localenv.zsh

@@ -8,20 +8,9 @@
 sketchybar --add event aerospace_workspace_change
 #echo $(aerospace list-workspaces --monitor 1 --visible no --empty no) >> ~/aaaa
 
-# 1️⃣ Get NSScreen IDs and Names (Aerospace Uses These Names)
 NSSCREEN_DATA=$(swift -e 'import AppKit; for screen in NSScreen.screens { if let screenID = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber { print("\(screenID.intValue)|\(screen.localizedName)") } }')
-
-# Get Sketchybar Data to map the nsscreen id to the sketchybar id
 SKETCHYBAR_DATA=$(sketchybar --query displays | jq -r '.[] | "\(.["arrangement-id"])|\(.["DirectDisplayID"])"')
-
-# 3️⃣ Get Aerospac Data to map the name to the nsscreen nam
 AERO_MONITORS=$(aerospace list-monitors --format "%{monitor-id}|%{monitor-name}")
-
-# 4️⃣ Print Mappings
-  echo -e "NSScreen Data:\n$NSSCREEN_DATA\n"
-  echo -e "Sketchybar Data:\n$SKETCHYBAR_DATA\n"
-  echo -e "Aerospace Monitors:\n$AERO_MONITORS\n"
-
 
 while IFS='|' read -r SKETCHYBAR_ID SKETCHYBAR_NSSCREEN_ID; do
   NSSCREEN_ID=""
@@ -46,12 +35,6 @@ while IFS='|' read -r SKETCHYBAR_ID SKETCHYBAR_NSSCREEN_ID; do
       break
     fi
   done <<<"$AERO_MONITORS"
-
-  # Output based on verbosity
-  if [[ -n "$AERO_ID" && -n "$NSSCREEN_ID" ]]; then
-      echo "Sketchybar ID: $SKETCHYBAR_ID -> NSScreen ID: $NSSCREEN_ID -> Aerospace ID: $AERO_ID -> Aerospace Names: $AERO_NAME"
-      # echo "$SKETCHYBAR_ID|$NSSCREEN_ID|$AERO_ID|$AERO_NAME"
-  fi
 
   while IFS='|' read -r DISPLAY_ID NSSCREEN_ID AERO_ID AERO_NAME; do
     for sid in $(aerospace list-workspaces --monitor "$AERO_ID" </dev/null); do

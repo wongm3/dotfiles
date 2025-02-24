@@ -8,55 +8,96 @@
 sketchybar --add event aerospace_workspace_change
 #echo $(aerospace list-workspaces --monitor 1 --visible no --empty no) >> ~/aaaa
 
-for mf in $(aerospace list-monitors --format '%{monitor-id}|%{monitor-appkit-nsscreen-screens-id}'); do
-  IFS="|" read -r ma m <<< "$mf"
-  
-  for i in $(aerospace list-workspaces --monitor $ma); do
-    sid=$i
-    space=(
-      space="$sid"
-      icon="$sid"
-      icon.highlight_color=$RED
-      icon.padding_left=10
-      icon.padding_right=10
-      display=$m
-      padding_left=2
-      padding_right=2
-      label.padding_right=20
-      label.color=$GREY
-      label.highlight_color=$WHITE
-      label.font="sketchybar-app-font:Regular:16.0"
-      label.y_offset=-1
-      background.color=$BACKGROUND_1
-      background.border_color=$BACKGROUND_2
-      script="$PLUGIN_DIR/space.sh"
-    )
+# 1️⃣ Get NSScreen IDs and Names (Aerospace Uses These Names)
+NSSCREEN_DATA=$(swift -e 'import AppKit; for screen in NSScreen.screens { if let screenID = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber { print("\(screenID.intValue)|\(screen.localizedName)") } }')
 
-    sketchybar --add space space.$sid left \
+# Get Sketchybar Data to map the nsscreen id to the sketchybar id
+SKETCHYBAR_DATA=$(sketchybar --query displays | jq -r '.[] | "\(.["arrangement-id"])|\(.["DirectDisplayID"])"')
+
+# 3️⃣ Get Aerospac Data to map the name to the nsscreen nam
+AERO_MONITORS=$(aerospace list-monitors --format "%{monitor-id}|%{monitor-name}")
+
+# 4️⃣ Print Mappings
+  echo -e "NSScreen Data:\n$NSSCREEN_DATA\n"
+  echo -e "Sketchybar Data:\n$SKETCHYBAR_DATA\n"
+  echo -e "Aerospace Monitors:\n$AERO_MONITORS\n"
+
+
+while IFS='|' read -r SKETCHYBAR_ID SKETCHYBAR_NSSCREEN_ID; do
+  NSSCREEN_ID=""
+  NSSCREEN_NAME=""
+  AERO_ID=""
+  AERO_NAME=""
+
+  # Find NSScreen ID
+  while IFS='|' read -r ns_id ns_name; do
+    if [[ "$ns_id" == "$SKETCHYBAR_NSSCREEN_ID" ]]; then
+      NSSCREEN_ID="$ns_id"
+      NSSCREEN_NAME="$ns_name"
+      break
+    fi
+  done <<<"$NSSCREEN_DATA"
+
+  # Find Aerospace ID
+  while IFS='|' read -r aero_id aero_name; do
+    if [[ "$aero_name" == "$NSSCREEN_NAME" ]]; then
+      AERO_ID="$aero_id"
+      AERO_NAME="$aero_name"
+      break
+    fi
+  done <<<"$AERO_MONITORS"
+
+  # Output based on verbosity
+  if [[ -n "$AERO_ID" && -n "$NSSCREEN_ID" ]]; then
+      echo "Sketchybar ID: $SKETCHYBAR_ID -> NSScreen ID: $NSSCREEN_ID -> Aerospace ID: $AERO_ID -> Aerospace Names: $AERO_NAME"
+      # echo "$SKETCHYBAR_ID|$NSSCREEN_ID|$AERO_ID|$AERO_NAME"
+  fi
+
+  while IFS='|' read -r DISPLAY_ID NSSCREEN_ID AERO_ID AERO_NAME; do
+    for sid in $(aerospace list-workspaces --monitor "$AERO_ID" </dev/null); do
+      space=(
+        space="$sid"
+        icon="$sid"
+        icon.highlight_color=$RED
+        icon.padding_left=10
+        icon.padding_right=10
+        display=$DISPLAY_ID
+        padding_left=2
+        padding_right=2
+        label.padding_right=20
+        label.color=$GREY
+        label.highlight_color=$WHITE
+        label.font="sketchybar-app-font:Regular:16.0"
+        label.y_offset=-1
+        background.color=$BACKGROUND_1
+        background.border_color=$BACKGROUND_2
+        script="$PLUGIN_DIR/space.sh"
+      )
+
+      sketchybar --add space space.$sid left \
                --set space.$sid "${space[@]}" \
                --subscribe space.$sid mouse.clicked
 
-    apps=$(aerospace list-windows --workspace $sid | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+      apps=$(aerospace list-windows --workspace $sid | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
-    icon_strip=" "
-    if [ "${apps}" != "" ]; then
-      while read -r app
-      do
-        icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
-      done <<< "${apps}"
-    else
-      icon_strip=" —"
-    fi
+      icon_strip=" "
+      if [ "${apps}" != "" ]; then
+        while read -r app
+        do
+          icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
+        done <<< "${apps}"
+      else
+        icon_strip=" —"
+      fi
 
-    sketchybar --set space.$sid label="$icon_strip"
-  done
+      sketchybar --set space.$sid label="$icon_strip"
+    done
 
-  for i in $(aerospace list-workspaces --monitor $ma --empty); do
-    sketchybar --set space.$i display=0
-  done
-  
-done
-
+    for i in $(aerospace list-workspaces --monitor $AERO_ID --empty); do
+      sketchybar --set space.$i display=0
+    done
+  done <<<"$SKETCHYBAR_ID|$NSSCREEN_ID|$AERO_ID|$AERO_NAME"
+done <<<"$SKETCHYBAR_DATA"
 
 space_creator=(
   icon=􀆊

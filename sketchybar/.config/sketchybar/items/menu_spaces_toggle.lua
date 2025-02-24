@@ -25,7 +25,7 @@ local function addToggle()
       string = "Spaces",
     },
     background = {
-      color = settings.colors.with_alpha(settings.colors.dirty_white, 0.0),
+      color = settings.colors.with_alpha(settings.colors.subtext1, 0.0),
     }
   })
 
@@ -53,7 +53,7 @@ local function addToggle()
           color = { alpha = 0.0 },
           border_color = { alpha = 0.0 },
         },
-        icon = { color = settings.colors.white },
+        icon = { color = settings.colors.text },
         label = { width = 0 }
       })
     end)

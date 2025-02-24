@@ -34,9 +34,9 @@ local function selectCurrentWorkspace(focusedWorkspaceName)
 		if item ~= nil then
 			local isSelected = sid == constants.items.SPACES .. "." .. focusedWorkspaceName
 			item:set({
-				icon = { color = isSelected and settings.colors.bg1 or settings.colors.white },
-				label = { color = isSelected and settings.colors.bg1 or settings.colors.white },
-				background = { color = isSelected and settings.colors.white or settings.colors.bg1 },
+				icon = { color = isSelected and settings.colors.bg1 or settings.colors.text },
+				label = { color = isSelected and settings.colors.bg1 or settings.colors.text },
+				background = { color = isSelected and settings.colors.text or settings.colors.bg1 },
 			})
 		end
 	end
@@ -63,7 +63,7 @@ local function addWorkspaceItem(workspaceName)
 		},
 		icon = {
 			string = spaceConfig.icon or settings.icons.apps["default"],
-			color = settings.colors.white,
+			color = settings.colors.text,
 		},
 		background = {
 			color = settings.colors.bg1,

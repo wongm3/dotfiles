@@ -1,4 +1,4 @@
 theme = catppuccin-macchiato
 background-opacity = 0.90
 
-window-decoration = none
+macos-titlebar-style = hidden

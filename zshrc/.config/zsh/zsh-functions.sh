@@ -22,7 +22,7 @@ function zsh_add_snippet() {
 
   if [ ! -d "$ZDOTDIR/plugins/$REPO/$PLUGIN_PATH" ]; then
     mkdir -p "$ZDOTDIR/plugins/$REPO/$PLUGIN_PATH"
-    curl "https://raw.githubusercontent.com/$REPO/refs/heads/$2/$PLUGIN_PATH/$PLUGIN_NAME" -o "$ZDOTDIR/plugins/$1"
+    curl --progress-bar -fSL "https://raw.githubusercontent.com/$REPO/refs/heads/$2/$PLUGIN_PATH/$PLUGIN_NAME" -o "$ZDOTDIR/plugins/$1"
     chmod +x "$ZDOTDIR/plugins/$1"
   fi
 

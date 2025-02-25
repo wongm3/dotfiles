@@ -30,6 +30,7 @@ setopt HIST_VERIFY
 # +-------------+
 
 autoload -Uz compinit
+compinit
 
 # +---------+
 # | PLUGINS |

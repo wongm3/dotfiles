@@ -1,7 +1,7 @@
 local constants = require("constants")
 local settings = require("config.settings")
 
-local popupWidth <const> = settings.dimens.graphics.popup.width + 20
+local popupWidth <const> = settings.dimens.graphics.popup.width + 100
 
 sbar.exec("killall network_load >/dev/null; $CONFIG_DIR/bridge/network_load/bin/network_load en0 network_update 2.0")
 

@@ -73,4 +73,4 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/ca
 
 export ZSH_TMUX_FIXTERM=false
 
-source $ZDOTDIR/.localenv.zsh
+source $ZDOTDIR/.localenv.sh

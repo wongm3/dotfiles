@@ -29,30 +29,16 @@ setopt HIST_VERIFY
 # | PLUGINS |
 # +---------+
 
-# Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+source "$ZDOTDIR/zsh-functions.sh"
 
-# Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Add in zsh plugins
-zinit ice pick"themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
-zinit light catppuccin/zsh-syntax-highlighting
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light junegunn/fzf-git.sh 
-
-# Add in snippets
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit snippet OMZP::tmux
+zsh_add_snippet "catppuccin/zsh-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh" main
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-completions"
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "junegunn/fzf-git.sh"
+zsh_add_snippet "ohmyzsh/ohmyzsh/lib/git.zsh" master
+zsh_add_snippet "ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh" master
+zsh_add_snippet "ohmyzsh/ohmyzsh/plugins/tmux/tmux.plugin.zsh" master
 
 # +---------+
 # | ALIASES |

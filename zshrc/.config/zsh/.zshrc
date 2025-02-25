@@ -25,6 +25,12 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 
+# +-------------+
+# | Completions |
+# +-------------+
+
+autoload -Uz compinit
+
 # +---------+
 # | PLUGINS |
 # +---------+
@@ -65,6 +71,13 @@ fastfetch
 if [ $(command -v "fzf") ]; then
     source $ZDOTDIR/fzf.zsh
 fi
+
+# +-----+
+# | NVM |
+# +-----+
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # +----------+

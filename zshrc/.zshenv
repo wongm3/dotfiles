@@ -48,6 +48,12 @@ export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200"
 
 # +-----+
+# | MAN |
+# +-----+
+
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+
+# +-----+
 # | NVM |
 # +-----+
 

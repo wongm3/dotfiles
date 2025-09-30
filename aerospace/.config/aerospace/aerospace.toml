@@ -118,12 +118,12 @@ if.app-id = 'com.microsoft.edgemac'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
+if.app-id = 'Zen'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'

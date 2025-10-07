@@ -24,11 +24,11 @@ alias 9='cd -9'
 # | LS |
 # +----+
 
-alias ls='eza --color=always --long --icons=always --ignore-glob=".git"'
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+alias ls='eza -lh --color=always --icons=always --ignore-glob=".git"'
+alias l='ls'
+alias la='ls -aa'
+alias lsa='ls -a'
+alias ll='ls'
 
 # +----------+
 # | PERSONAL |

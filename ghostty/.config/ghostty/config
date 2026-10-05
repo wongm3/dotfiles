@@ -1,5 +1,5 @@
 theme = catppuccin-macchiato.conf
-background-opacity = 0.90
+#background-opacity = 0.90
 
 macos-icon = holographic
 macos-option-as-alt = true
